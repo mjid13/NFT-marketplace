@@ -1,0 +1,36 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block nav %}
+
+		<main>
+
+
+	<div class="container">
+  <!-- Ticket listing -->
+  <div class="ticket-list-index">
+      {% for address, ditel in ownedT.items  %}
+    <div class="ticket-index">
+      <div class="ticket-image-index">
+        <img src="https://picsum.photos/id/100/400/300" alt="Ticket Image">
+      </div>
+
+		 <div class="ticket-details-index">
+						<h3 >Event Name : {{ditel.0}}</h3>
+						<p >Date : {{ditel.6}}</p>
+						<p>Time : {{ditel.7}}</p>
+						<p>Price: {{ditel.3}}</p>
+      </div>
+      <div class="ticket-actions-index">
+          					{% csrf_token %}
+
+		<input type="hidden" name="Tickaddress" value="{{ address }}">
+        <button><a href="{% url 'OrgnzApp:burn' %}" type="button">View</a></button>
+      </div>
+    </div>
+      				{% endfor %}
+
+  </div>
+    </div>
+        </main>
+  {% endblock %}

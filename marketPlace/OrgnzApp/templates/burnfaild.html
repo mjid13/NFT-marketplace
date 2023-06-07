@@ -1,0 +1,24 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block nav %}
+
+
+<div class="container">
+  <div class="row text-center">
+    <div class="col-sm-6 col-sm-offset-3">
+      <br><br>
+      <h2 style="color:#288ee2">Failed</h2>
+      <img src="{% static 'AdminApp/img/success.png' %}" height="75px" width="75px">
+      <br>
+      <br>
+
+      <p style="font-size:20px;color:#5C5C5C;">Your transaction to BURN NFT Tickets is Failed.</p>
+      <a href="{% url 'OrgnzApp:burn' %}" class="btn btn-primary w-100">     Continue      </a>
+      <br><br>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

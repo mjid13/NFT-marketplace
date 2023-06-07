@@ -1,0 +1,87 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block nav %}
+<html>
+<head>
+ 
+<style>
+body{
+    margin: 0;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(174, 170, 170);
+  }
+
+  .registration-form{
+    width: 400;
+    height: 440;
+    margin: 4px auto 0;
+    border: 2px solid #ccc;
+    padding: 30px;
+    box-shadow: 0 0 20px #ccc;
+}
+  
+</style>
+</head>
+
+
+{% if messages %}
+{% for message in messages %}
+
+
+<body>
+
+
+<div class="alert alert-danger" role="alert">
+  {{message}}
+</div>
+{% endfor %}
+{% endif %}
+
+
+<form action="" name="f1" onsubmit="return validate()" method="post">
+  {% csrf_token %}
+  <div class="registration-form">
+    <h3>Change Password</h3>
+    <table>
+      <tr>
+
+
+
+      <tr>
+        <td>Password:</td>
+        <td><input type="number" name="price" placeholder="new price" class="." />
+          <span id="passwordlocation" style="color:red"></span>
+        </td>
+      </tr>
+
+
+
+      <tr>
+        <td></td>
+        <td colspan="2"><input type="submit" value="Submit" class="btn btn-primary w-100"
+            onclick="ValidateEmail(document.f1.price)" /> </td>
+      </tr>
+    </table><br>
+  </div>
+</form>
+
+</body>
+
+
+
+<script >
+function ValidateEmail(input) {
+
+    if (input.value == "") {
+      document.getElementById("emlocation").innerHTML =
+        "  <br>Enter Price!";
+      document.f1.price.focus();
+      return false;
+    }
+}
+
+</script>
+
+{% endblock %}

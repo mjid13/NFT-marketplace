@@ -1,0 +1,91 @@
+{% extends 'index.html' %}
+{% load static %}
+
+
+
+{% block nav %}
+{% if isLogin == True %}
+
+<div class="cont1">
+		<div class="marketplace-items">
+			<img src="https://picsum.photos/id/100/400/300" alt="Product">
+			<h2>اسم المنتج 1</h2>
+			<p>وصف المنتج يتضمن بعض المعلومات عن المنتج ومميزاته وفوائده.</p>
+			<button class="cart">أضف إلى السلة</button>
+			<button class="favorite">
+				<i class="fa fa-heart-o" aria-hidden="true"></i>
+			</button>
+		</div>
+		<div class="product">
+			<img src="https://picsum.photos/id/200/400/300" alt="Product">
+			<h2>اسم المنتج 2</h2>
+			<p>وصف المنتج يتضمن بعض المعلومات عن المنتج ومميزاته وفوائده.</p>
+			<button class="cart">أضف إلى السلة</button>
+			<button class="favorite">
+				<i class="fa fa-heart-o" aria-hidden="true"></i>
+			</button>
+		</div>
+		<div class="product">
+			<img src="https://picsum.photos/id/300/400/300" alt="Product">
+			<h2>اسم المنتج 3</h2>
+			<p>وصف المنتج يتضمن بعض المعلومات عن المنتج ومميزاته وفوائده.</p>
+			<button class="cart">أضف إلى السلة</button>
+			<button class="favorite">
+				<i class="fa fa-heart-o" aria-hidden="true"></i>
+			</button>
+		</div>
+    <div class="product">
+			<img src="https://picsum.photos/id/300/400/300" alt="Product">
+			<h2>اسم المنتج 3</h2>
+			<p>وصف المنتج يتضمن بعض المعلومات عن المنتج ومميزاته وفوائده.</p>
+			<button class="cart">أضف إلى السلة</button>
+			<button class="favorite">
+				<i class="fa fa-heart-o" aria-hidden="true"></i>
+			</button>
+		</div>
+    <div class="product">
+			<img src="https://picsum.photos/id/300/400/300" alt="Product">
+			<h2>اسم المنتج 3</h2>
+			<p>وصف المنتج يتضمن بعض المعلومات عن المنتج ومميزاته وفوائده.</p>
+			<button class="cart">أضف إلى السلة</button>
+			<button class="favorite">
+				<i class="fa fa-heart-o" aria-hidden="true"></i>
+			</button>
+		</div>
+	</div>
+	<div class="overlay">
+			<div class="popup">
+			<span class="close">&times;</span>
+			<h2>أضف المنتج إلى السلة</h2>
+			<p>يرجى تحديد الكمية المراد شراؤها:</p>
+			<input type="number" min="1" max="10" value="1">
+			<button>أضف إلى السلة</button>
+		</div>
+	</div>
+	<script>
+		const overlay = document.querySelector(".overlay");
+		const cartButtons = document.querySelectorAll(".cart");
+		const close = document.querySelector(".close");
+		const popup = document.querySelector(".popup");
+		
+		cartButtons.forEach(button => {
+			button.addEventListener("click", () => {
+				overlay.style.display = "block";
+				popup.style.display = "block";
+			});
+		});
+		
+		close.addEventListener("click", () => {
+			overlay.style.display = "none";
+			popup.style.display = "none";
+		});
+	</script>
+
+ {% else %}
+  <h1>ERROR 404!!!</h1>
+
+  {% endif %}
+
+
+    {% endblock %}
+

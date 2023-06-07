@@ -1,0 +1,76 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block nav %}
+  <html>
+<head>
+<style>
+
+  body{
+    text-align: center;
+  }
+
+  .add-btn {
+  background-color: #1993bb;
+  color: white;
+  padding: 5px 35px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  }
+
+  .dialog{
+    color: red;
+  }
+
+
+</style>
+</head>
+<body>    
+  <br><br><br><br><form method="post">
+      {% csrf_token %}
+  <label for="id">Enter id:</label>
+  <input type="text" class="input" id="id" name="id" placeholder="Enter Id" /><br><br>
+
+   <button onclick="showConfirmDialog()" class="add-btn">Confirm</button> </form>
+
+
+
+</body>
+<script>
+    function showConfirmDialog() {
+      var dialog = document.createElement("dialog");
+      dialog.innerHTML = "Are you sure you want to confirm ?";
+      var okButton = document.createElement("button");
+      okButton.innerHTML = "Confirm";
+      okButton.onclick = function() {
+        dialog.close();
+        // User clicked "OK"
+        alert("Action confirmed");
+      };
+      var cancelButton = document.createElement("button");
+      cancelButton.innerHTML = "Cancel";
+      cancelButton.onclick = function() {
+        dialog.close();
+        // User clicked "Cancel"
+        alert("Action cancelled");
+      };
+      dialog.appendChild(okButton);
+      dialog.appendChild(cancelButton);
+      document.body.appendChild(dialog);
+      dialog.showModal();
+    }
+
+    </script>
+
+
+<br>
+<br>
+<br>
+<br>
+<br><br>
+<br>
+</html>
+
+
+{% endblock %}

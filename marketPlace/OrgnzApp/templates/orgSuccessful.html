@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block nav %}
+
+
+<div class="container">
+  <div class="row text-center">
+    <div class="col-sm-6 col-sm-offset-3">
+      <br><br>
+      <h2 style="color:#288ee2">Success</h2>
+      <img src="{% static 'AdminApp/img/success.png' %}" height="75px" width="75px">
+      <br>
+      <br>
+
+      <p style="font-size:20px;color:#5C5C5C;">Thank you for register in our NFTs MarketPlace, Here you can create your
+        own Tickets and sell easily a trusted Tickets as NFT(Non-Fungible Token), Know you are wellcome to Login and get new experience
+        in by selling tickets, Please click the button and go login.</p>
+      <a href="{% url 'OrgnzApp:login1' %}" class="btn btn-primary w-100">     Log in     </a>
+      <br><br>
+    </div>
+
+  </div>
+</div>
+
+{% endblock %}

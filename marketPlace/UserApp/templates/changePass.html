@@ -1,0 +1,242 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block nav %}
+<html>
+<head>
+ 
+<style>
+body{
+    margin: 0;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(174, 170, 170);
+  }
+
+  .registration-form{
+    width: 400;
+    height: 440;
+    margin: 4px auto 0;
+    border: 2px solid #ccc;
+    padding: 30px;
+    box-shadow: 0 0 20px #ccc;
+}
+  
+</style>
+</head>
+
+
+{% if messages %}
+{% for message in messages %}
+
+
+<body>
+
+
+<div class="alert alert-danger" role="alert">
+  {{message}}
+</div>
+{% endfor %}
+{% endif %}
+
+
+<form action="" name="f1" onsubmit="return validate()" method="post">
+  {% csrf_token %}
+  <div class="registration-form">
+    <h3>Change Password</h3>
+    <table>
+      <tr>
+
+
+
+      <tr>
+        <td>Password:</td>
+        <td><input type="password" name="password" placeholder="Password" class="password pass1" />
+          <span id="passwordlocation" style="color:red"></span>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Confirm Password:</td>
+        <td><input type="password" name="cpassword" class="password pass1" placeholder="Confirm Password" />
+          <span id="cplocation" style="color:red"></span>
+        </td>
+      </tr>
+
+
+      <tr>
+        <td></td>
+        <td colspan="2"><input type="submit" value="Submit" class="btn btn-primary w-100"
+            onclick="ValidateEmail(document.f1.email)" /> </td>
+      </tr>
+    </table><br>
+  </div>
+</form>
+
+</body>
+
+
+
+<script>//for phone format
+
+
+  var phone_input = document.getElementById("my_phone");
+
+  phone_input.addEventListener('input', () => {
+    phone_input.setCustomValidity('');
+    phone_input.checkValidity();
+  });
+
+  phone_input.addEventListener('invalid', () => {
+    if (phone_input.value === '') {
+      phone_input.setCustomValidity('Enter phone number!');
+    } else {
+      phone_input.setCustomValidity('Enter phone number in this format: 968-xxxxxxxx');
+    }
+  });
+</script>
+
+
+
+
+<script type="text/javascript">
+
+  //email validate
+  function ValidateEmail(input) {
+    var validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+
+    if (input.value == "") {
+      document.getElementById("emlocation").innerHTML =
+        "  <br>Enter email!";
+      document.f1.email.focus();
+      return false;
+    }
+
+    else if (input.value.match(validRegex)) {
+      document.getElementById("emlocation").innerHTML =
+        "";
+      document.f1.email.focus();
+      return true;
+
+    } else {
+      document.getElementById("emlocation").innerHTML =
+        "  <br>Invalid email!";
+      document.f1.email.focus();
+      return false;
+    }
+  }
+
+
+
+
+  var phone_input = document.getElementById("my_phone");
+
+  phone_input.addEventListener('input', () => {
+    phone_input.setCustomValidity('');
+    phone_input.checkValidity();
+  });
+
+  phone_input.addEventListener('invalid', () => {
+    if (phone_input.value === '') {
+      phone_input.setCustomValidity('Enter phone number!');
+    }
+    else {
+      phone_input.setCustomValidity('Enter phone number in this format: 968-xxxxxxxx');
+    }
+  });
+
+
+
+  function validate() {
+
+    var address = document.f1.address.value;
+    var name = document.f1.name.value;
+    var phone = document.f1.phone.value;
+    var password = document.f1.password.value;
+    // var email=document.f1.email.value;
+    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    //var birthday=document.f1.birthday.value;
+    var cpassword = document.f1.cpassword.value;
+    var passwordlength = document.f1.password.value.length;
+    var status = false;
+
+
+
+    if (name == "") {
+      document.getElementById("namelocation").innerHTML =
+        " <br>Please enter your name!";
+      status = false;
+    } else {
+      document.getElementById("namelocation").innerHTML =
+        "";
+      status = true;
+    }
+
+
+
+    if (address == "") {
+      document.getElementById("addrelocation").innerHTML =
+        " <br>Please enter your wallet address!";
+      status = false;
+    } else {
+      document.getElementById("addrelocation").innerHTML =
+        "";
+      status = true;
+    }
+
+
+
+    if (phone == "") {
+      document.getElementById("phonelocation").innerHTML =
+        " <br>Please enter your Phone number!";
+      status = false;
+    } else {
+      document.getElementById("phonelocation").innerHTML =
+        "";
+      status = true;
+    }
+
+    if (cpassword == "") {
+      document.getElementById("cplocation").innerHTML =
+        "  <br>Please enter confirm password!";
+      status = false;
+    } else {
+      document.getElementById("cplocation").innerHTML =
+        "";
+      status = true;
+    }
+
+
+
+
+    if (password == "") {
+      document.getElementById("passwordlocation").innerHTML =
+        "  <br>please Enter Password!";
+      status = false;
+    }
+    else if (passwordlength <= 6) {
+      document.getElementById("passwordlocation").innerHTML =
+        "  <br>**Password must be greater than 6";
+      status = false;
+    }
+    else {
+      document.getElementById("passwordlocation").innerHTML =
+        "";
+      document.getElementById("cplocation").innerHTML =
+        "";
+      status = true;
+    }
+
+    if (password !== cpassword) {
+      document.getElementById("cplocation").innerHTML =
+        "  <br>Password don't match!";
+      status = false;
+    }
+
+
+    return status;
+  }  
+</script>
+
+{% endblock %}

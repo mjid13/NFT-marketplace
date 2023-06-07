@@ -1,0 +1,49 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block nav %}
+
+		<main class="main-3">
+			<h2>My Tickets</h2>
+
+			<div>
+				{% for address, ditel in ownedT.items  %}
+					{% for id in ditel.12  %}
+
+					<article class="article-my">
+						<img  src="https://picsum.photos/id/100/400/300" alt="Ticket 1">
+						<h3 >{{ditel.0}}</h3>
+						<p >Event Date: {{ditel.6}}  |  Time: {{ditel.7}}</p>
+						<p >ID: #{{id}}</p>
+						<p >ID: #{{ditel.5}}</p>
+
+						<form method="post">
+							      {% csrf_token %}
+
+							{% if ditel.5 is True %}
+								<p>is For sale </p>
+								<input type="hidden" name="notseal" value="notseal">
+								<input type="hidden" name="Tickaddress" value="{{ address }}">
+								<input type="hidden" name="Tid" value="{{ id }}">
+								<button class="article-3" type="submit">cansel sale</button>
+
+							{% else %}
+								<input type="number" name="price" placeholder="Enter new price" >
+								<input type="hidden" name="Tickaddress" value="{{ address }}">
+								<input type="hidden" name="Tid" value="{{ id }}">
+
+
+								<button class="article-3" type="submit">sale the Ticket</button>
+							{% endif %}
+						</form>
+					</article>
+					{% endfor %}
+				{% endfor %}
+
+			</div>
+		</main>
+
+		<footer>
+			<p>&copy; 2023 NFT Marketplace. All rights reserved.</p>
+		</footer>
+{% endblock %}

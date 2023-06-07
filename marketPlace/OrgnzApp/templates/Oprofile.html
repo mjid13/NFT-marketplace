@@ -1,0 +1,58 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block nav %}
+
+
+{% if isLogin == True %}
+
+    <div class="page-header">
+      <h1>My Account</h1>
+       <a href="{% url 'OrgnzApp:logout' %}">
+        <button type="button" class="btn btn-light">Logout</button><br></a>
+    </div>
+
+
+  <div class="container">
+
+        <div class="profile">
+          <div class="profile-image">
+            <img src="https://via.placeholder.com/200x200" alt="Profile Image">
+          </div>
+          <div class="profile-details">
+            <h3>{{ name }}</h3>
+            <p>{{ email }}</p>
+            <p>{{ phone }}</p>
+          <div class="profile-actions">
+              <a href="{% url 'OrgnzApp:changeProfile' %}">
+            <button>Edit Profile</button>
+                  </a>
+            <a href="{% url 'OrgnzApp:changePass' %}">
+                <button>Change Password</button></a>
+          </div>
+        </div>
+      </div>
+      <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a href="{% url 'OrgnzApp:createNFT' %}"><img src="{%static 'AdminApp/img/create.jpeg' %}" style="width: 20%;height: 25%;"> &nbsp;&nbsp;&nbsp;</a>
+
+      <a href="{% url 'OrgnzApp:showticket' %}"><img src="{%static 'AdminApp/img/show.jpeg' %}" style="width: 20%;height: 25%;"> &nbsp;&nbsp;&nbsp;</a>
+
+      <a href="{% url 'OrgnzApp:burnList' %}"><img src="{%static 'AdminApp/img/confirm.jpeg' %}" style="width: 20%;height: 25%;"> &nbsp;&nbsp;&nbsp;</a>
+
+
+  </div>
+
+
+<br>
+
+  {% else %}
+  <h1>ERROR 404!!!</h1>
+
+  {% endif %}
+
+{% endblock %}
+  <!--
+</div>
+<div class="frame" id="child1">
+  <iframe height="750" width="1100" name="farmeshow" title="Iframe Example"></iframe>
+</div>-->

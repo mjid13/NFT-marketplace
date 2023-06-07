@@ -1,0 +1,41 @@
+
+
+{% extends 'index.html' %}
+{% load static %}
+
+{% block nav %}
+  <html>
+    <head>
+        <style>
+
+        </style>
+    </head>
+    &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+
+		<main class="main-3">
+			<h1 style="text-align: center;">Sold Tickets List</h1>
+
+			<div>
+				{% for address, ditel in sold.items  %}
+					{% for id in ditel.12  %}
+
+					<article class="article-my">
+						<img  src="https://picsum.photos/id/100/400/300" alt="Ticket 1">
+						<h3 >{{ditel.0}}</h3>
+						<p >Event Date: {{ditel.6}}  |  Time: {{ditel.7}}</p>
+						<p >ID: #{{id}}</p>
+						<button class="article-3">View on Marketplace</button>
+					</article>
+					{% endfor %}
+				{% endfor %}
+
+
+			</div>
+		</main>
+
+		<footer>
+			<p>&copy; 2023 NFT Marketplace. All rights reserved.</p>
+		</footer>
+{% endblock %}
+
+</html>

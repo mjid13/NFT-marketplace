@@ -1,0 +1,103 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block nav %}
+
+
+
+<link rel="stylesheet"
+  href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' %}">
+
+
+<div class="container">
+      <div class="page-header">
+         <main class="main-singl ">
+      <div class="ticket-singl">
+
+         <div class="ticket-details-singl">
+
+          <h3>Event Name: {{ticket_details.0}} </h3>
+          <p>Date: {{ticket_details.6}}</p>
+          <p>Time: {{ticket_details.7}}</p>
+          <p>Class Type: {{ticket_details.8}}</p>
+          <p>Description: {{ticket_details.1}}</p>
+          <p>Address: {{ticket_address}}</p>
+          <p>Creator: {{ticket_details.9}}</p>
+             <p>Creator: {{ticket_details.5}}</p>
+        </div>
+
+        <div class="ticket-price-singl">{{ticket_details.3}} Wei</div>
+
+      </div>
+    </main>
+      </div>
+
+    <section id="tickets">
+        {% for i in list_of_tickets %}
+            {% if ticket_details %}
+                <article >
+                    <img src="{{ticket_details.2}}" alt="Concert Ticket">
+                    <h2>Ticket ID  : #{{i}}</h2>
+
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="Tickaddress" value="{{ ticket_address }}">
+                        <input type="hidden" name="id" value="{{ i }}">
+                        <div class="ticket-actions-singl">
+                          <button>BUY</button>
+                        </div>
+                    </form>
+                </article>
+            {% endif %}
+
+        {% endfor%}
+
+        </section>
+    {% if is_sec_seal is True %}
+ <section id="">
+        <div class="ticket-singl">
+
+             <div class="ticket-details-singl">
+
+              <h3>By it from another Customer</h3>
+            </div>
+
+
+        </div>
+
+        {% for id, ditel in second_sale.items  %}
+
+                <article >
+                    <img src="{{ditel.2}}" alt="Concert Ticket">
+                    <h2>Ticket ID  : #{{id}}</h2>
+                    <h2>Price  : {{ditel.3}} Wei</h2>
+                    <h2>Owner  : {{ditel.10}} Wei</h2>
+
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="Tickaddress" value="{{ ticket_address }}">
+                        <input type="hidden" name="id" value="{{ id }}">
+                        <div class="ticket-actions-singl">
+                          <button>BUY</button>
+                        </div>
+                    </form>
+                </article>
+            {% endfor %}
+
+
+			<!-- More articles... -->
+    </section>
+{% endif %}
+</div>
+<br>
+
+
+
+  <!--
+</div>
+<div class="frame" id="child1">
+  <iframe height="750" width="1100" name="farmeshow" title="Iframe Example"></iframe>
+</div>-->
+  {% endblock %}

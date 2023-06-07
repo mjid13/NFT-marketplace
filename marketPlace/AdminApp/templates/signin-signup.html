@@ -1,0 +1,79 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block nav %}
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div class="registration-form">
+  <img src="{% static 'MPapp/img/icone-de-cadenas-de-securite-noir.png' %}" height="75px" width="75px">
+  <h2>Sign in to your account</h2>
+
+  <form action="" name="f1" onsubmit="return validate()">
+    <table>
+
+      <tr>
+        <td>Username:</td>
+        <td><input type="text" name="name" class="text text1" placeholder="Enter Username" />
+          <span id="namelocation" style="color:red"></span>
+        </td>
+      </tr>
+      <tr>
+        <td>Password:</td>
+        <td><input type="password" name="password" class="text text1" placeholder="Enter password" />
+          <span id="passwordlocation" style="color:red"></span>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2"><input type="submit" value="LOGIN" class="button1" /> </td>
+      </tr>
+    </table>
+    <a href="choosereg.html" style="text-decoration:none">Dont have account? sign up</a>
+  </form>
+
+
+</div>
+<br><br> <br><br> <br><br><br><br><br>
+
+{% endblock %}
+
+<script type="text/javascript">
+  function validate() {
+    var name = document.f1.name.value;
+    var password = document.f1.password.value;
+    var passwordlength = document.f1.password.value.length;
+    var status = false;
+
+    if (name == "") {
+      document.getElementById("namelocation").innerHTML =
+        " <br>!Please enter your name";
+      status = false;
+    } else {
+      document.getElementById("namelocation").innerHTML =
+        "";
+      status = true;
+    }
+
+
+    if (password == "") {
+      document.getElementById("passwordlocation").innerHTML =
+        " <br>!Please enter Password";
+      status = false;
+    }
+    else if (passwordlength < 6) {
+      document.getElementById("passwordlocation").innerHTML =
+        " <br>**Password must be greater than 7";
+      status = false;
+    }
+    else {
+      document.getElementById("passwordlocation").innerHTML =
+        "";
+      status = true;
+    }
+
+    return status;
+  }  
+</script>
+
+
+
+</body>

@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block nav %}
+
+
+    <main class="main-singl ">
+      <div class="ticket-singl">
+        <div class="ticket-image-singl">
+          <img src="https://via.placeholder.com/300x200.png" alt="Ticket image" />
+        </div>
+         <div class="ticket-details-singl">
+          <h2>{{Tickaddress}}</h2>
+          <h3>Artist Name</h3>
+          <p>Date: 01/01/2023</p>
+          <p>Venue: Stadium Name</p>
+        </div>
+        <div class="ticket-price-singl">ETH 0.50</div>
+        <div class="ticket-actions-singl">
+          <button>BAY</button>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>&copy; 2023 NFT Ticket Marketplace. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+      </div>
+    </footer>
+{% endblock %}

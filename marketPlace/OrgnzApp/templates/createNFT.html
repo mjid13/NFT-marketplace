@@ -1,0 +1,116 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block nav %}
+
+<html>
+<head>
+    <style>
+        /* Style the file upload button */
+input[type="file"] {
+  display: none;
+}
+.upload-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.add-btn {
+  background-color: #1993bb;
+  color: white;
+  padding: 5px 35px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.upload-btn:hover {
+  background-color: #3e8e41;
+}
+
+.input{
+    font-size: 14px;
+     padding: 8px;
+      border-radius: 4px;
+       border: 1px solid #ccc;
+}
+
+
+
+
+
+    </style>
+</head>
+<body style="text-align: center;">
+    <h1>Add New NFTS</h1>
+    <form name="f1" onsubmit="return validate()"  method="POST">
+        {% csrf_token %}
+       <!-- <label>Choose a file:</label>
+        <label for="file-upload" class="upload-btn">Choose a file</label>
+        <input type="file" id="file-upload" name="file-upload" style="display: none;"><br><br>
+
+-->
+        <label for="ticketNum">Number of ticket:</label>
+        <input type="number" class="input" id="ticketNum" name="ticketNum" placeholder="Number of ticket" required /><br><br>
+
+        <label for="name">Name:</label>
+        <input type="text" class="input" id="name" name="name" placeholder="Enter Name" required /><br><br>
+
+        <label for="desc">Description:</label>
+        <input type="text" class="input" id="desc" name="description" placeholder="Description of NFTs" required /><br><br>
+
+        <label for="imgUrl">imageURL:</label>
+        <input type="text" class="input" id="imgUrl" name="imgUrl" placeholder="imageURL of NFTs" required /><br><br>
+
+
+        <label for="price">Price:</label>
+        <input type="number" class="input" id="price" name="price" placeholder="Enter price" required /><br><br>
+
+        <label for="royalty">royalty:</label>
+        <input type="number" class="input" id="royalty" name="royalty" placeholder="Enter location" required /><br><br>
+
+        <label for="date-input">Choose a date:</label>
+        <input type="date" id="date-input"  name="date" class="input" required /><br><br>
+
+        <label for="time-input">Choose a time:</label>
+        <input type="time" id="time-input" name="time" class="input" required /><br><br>
+
+        <label for="type">Choose a Type:</label>
+        <select id="type" name="type">
+           <option value="Basic">Basic</option>
+           <option value="Standard">Standard</option>
+           <option value="VIP">VIP</option>
+
+         </select><br><br>
+
+        <label >Ready to sell?</label>&nbsp;&nbsp;&nbsp;&nbsp;
+        <label>
+            <input type="radio" name="ready" value="true">
+            <span>Yes</span>
+          </label>
+
+          <label>
+            <input type="radio" name="ready" value="false">
+            <span>No</span>
+          </label><br><br>
+
+        <input type="submit" class="add-btn" value="submit" onclick="Validate()">
+      </form>
+
+      <script>
+        document.querySelector('.upload-btn').addEventListener('click', function() {
+          document.querySelector('#file-upload').click();});
+      </script>
+
+
+
+</body>
+
+<br><br><br>
+{% endblock %}
+
+
+</html>

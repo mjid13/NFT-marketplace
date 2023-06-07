@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block nav %}
+
+    <main>
+    <form action="{% url 'AdminApp:search' %}" method="get">
+			{% csrf_token %}
+			<section id="search">
+				<input type="text" name="ticketName" placeholder="Search tickets...">
+				 <button>Search</button>
+			</section></form>
+    </main>
+	<main class="main-2">
+
+		<section id="tickets-2">
+			{% for address, ditel in ticket_output.items  %}
+			<article >
+				<img src="https://picsum.photos/id/100/400/300" alt="Concert Ticket">
+				<h2>Event Name : {{ditel.0}}</h2>
+				<p>Date : {{ditel.6}}</p>
+				<p>Time : {{ditel.7}}</p>
+				<p>Price: {{ditel.3}}</p>
+
+				<form method="post">
+					{% csrf_token %}
+					<input type="hidden" name="Tickaddress" value="{{ address }}">
+					<button type="submit" name="collection">See Collection</button>
+				</form>
+			</article>
+			{% endfor %}
+
+			<!-- More articles... -->
+		</section>
+
+	</main>
+	<footer>
+		<p>&copy; 2023 NFT Ticket Marketplace</p>
+	</footer>
+
+{% endblock %}

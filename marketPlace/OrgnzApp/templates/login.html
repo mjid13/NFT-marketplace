@@ -1,0 +1,81 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block nav %}
+
+<html>
+<head>
+ 
+<style>
+body{
+    margin: 0;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(174, 170, 170);
+  }
+
+  .registration-form{
+    width: 400;
+    height: 440;
+    margin: 10px auto 0;
+    border: 2px solid #ccc;
+    padding: 30px;
+    box-shadow: 0 0 20px #ccc;
+}
+
+
+
+  
+</style>
+</head>
+
+<body>
+
+{% if messages %}
+    {% for message in messages %}
+
+
+
+<div class="alert alert-danger" role="alert">
+  {{message}}
+</div>
+    {% endfor %}
+{% endif %}
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div class="registration-form" >
+    <img src="{% static 'AdminApp/img/icone-de-cadenas-de-securite-noir.png' %}" height="75px" width="75px">
+    <h2>Sign in to Organizer account</h2>
+
+    <form   action="" name="f1" method="POST" onsubmit="return validate()">
+        {% csrf_token %}
+    <table>
+
+      <tr>
+        <td>Account Address:</td>
+        <td><input type="text"  name="address" class="text text1" placeholder="Enter address " required/>
+          <span id="namelocation" style="color:red"></span>
+        </td>
+      </tr>
+      <tr>
+        <td>Password:</td>
+        <td><input type="password" name="password" placeholder="Password" class="password pass1" required/>
+          <span id="passwordlocation" style="color:red"></span>
+        </td>
+      </tr>
+      <tr>
+
+      </tr>
+      <tr>
+        <td></td>
+        <td colspan="2"><input type="submit" value="Submit"  class="btn btn-primary w-100" /> </td>
+      </tr>
+    </table><br>
+        Dont have Organizer account?<a href="{% url 'OrgnzApp:orgRegister' %}" style="text-decoration:none"> sign up</a>
+      
+    </form> 
+</div> <br><br>
+</body>
+</html>
+{% endblock %}
